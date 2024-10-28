@@ -1,0 +1,17 @@
+.our_courses {
+  background: #f9f9f9;
+}
+.our_courses .card-body ul {
+  column-count: 2;
+  column-gap: 0px;
+}
+
+.our_courses .card-body ul li {
+  break-inside: avoid;
+  padding: 5px 0;
+  max-height: 30px;
+}
+
+.card-body {
+  padding: 1rem 1rem 0rem;
+}

@@ -1,0 +1,28 @@
+.our_achievement{
+background-image: url(../../Images/our_achievement.jpg);
+background-size: cover;
+width: 100%;
+background-position: center;
+
+}
+
+.overlay{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.837);
+    color: white;
+    padding: 3rem 0rem;
+}
+
+.achievement i {
+    font-size: 40px;
+    color: var(--color-heading);
+}
+
+.card-footer{
+    background-color: #F0F0F0;
+}
+
+.our_achievement .overlay .container{
+    padding: 1rem !important;
+}

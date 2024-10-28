@@ -1,0 +1,19 @@
+.webdesignSideSection {
+  padding: 2rem;
+  background: #f7f7f7;
+  margin-bottom: 1rem;
+}
+
+.registerbtn {
+  background-color: var(--color-heading);
+  color: white;
+  font-size: 14px;
+  border: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.webdesignSideSection h3{
+  margin-top: 1rem;
+}

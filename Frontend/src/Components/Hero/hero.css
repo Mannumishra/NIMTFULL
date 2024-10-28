@@ -1,0 +1,115 @@
+/* .forCareerbg {
+  background-image: url("../../Images/heroTopBg.png");
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10rem 5rem;
+}
+
+.career-bg {
+  align-items: center;
+  margin-bottom: 1rem;
+} */
+.forCareerbg .slider{
+position: relative;
+}
+.career_content {
+  text-align: start;
+  line-height: 40px;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+}
+
+.career-para {
+  font-size: 60px;
+  max-width: 70%;
+  color: white;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+.card-section-main {
+  background-color: #212121;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  height: 290px;
+}
+
+.card-section-main .icon {
+  color: #3500ff;
+  font-size: 40px;
+  margin-bottom: 1rem;
+}
+
+.enquiry_form {
+  margin-bottom: 1rem;
+}
+
+/* Additions to the existing styles */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-image {
+  width: 100%;
+  height:70vh;
+  background-size: cover;
+}
+
+/* Fixed content overlay on the slider */
+.fixed-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .card-section {
+    position: static;
+    margin-top: 1rem;
+  }
+  .card-section-main {
+    margin-bottom: 1rem;
+    padding: 1rem 1rem;
+    height: 240px;
+  }
+  .card-section-main p {
+    margin: 0;
+  }
+  .forCareerbg {
+    padding: 4rem 0rem;
+  }
+  .career-para {
+    font-size: 30px;
+    max-width: 100%;
+    font-weight: 700;
+    line-height: 60px;
+  }
+  .career_content {
+    text-align: center;
+  }
+  .forCareerbg {
+    margin-bottom: 0;
+    justify-content: center;
+  }
+  .homeEnquiry {
+    margin-top: 2rem;
+  }
+
+  .career-bg {
+    margin-bottom: 1rem;
+  }
+}

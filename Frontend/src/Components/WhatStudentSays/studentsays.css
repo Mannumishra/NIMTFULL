@@ -1,0 +1,75 @@
+.studentsays {
+  background-image: url(../../Images/studendsays.jpg); /* Adjust path */
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.overlaystudent {
+  position: relative;
+background-color: rgba(0, 0, 0, 0.351);
+padding: 5rem 0rem;
+}
+
+.testimonial-card {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding-bottom: 60px; /* Extra padding to ensure content is visible */
+}
+
+.testimonial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* Added spacing */
+}
+
+.testimonial img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white; /* Border for visibility */
+  margin-right: 10px; /* Spacing between image and text */
+}
+
+.testimonial h6 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.testimonial small {
+  display: block;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.studentsays .slick-slide {
+  overflow: visible; /* Ensures the testimonial does not get cut off */
+}
+
+.slick-dots li button:before {
+  color: white; /* Ensure dots are visible on dark background */
+}
+
+
+@media only screen and (max-width:768px) {
+  .overlaystudent {
+  padding: 0rem 0rem;
+  }
+  .latestNews{
+    padding: 1rem 0rem;
+  }
+  .slick-next{
+    display: none !important;
+  }
+  .slick-prev{
+    display: none !important;
+  }
+}
