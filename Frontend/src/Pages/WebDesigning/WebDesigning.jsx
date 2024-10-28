@@ -12,7 +12,7 @@ const WebDesigning = () => {
   const getApiData = async () => {
     try {
       const res = await axios.get(
-        "https://api.nimteducation.com/api/get-single-course-details/" +
+        "https://ins.api.digiindiasolutions.com/api/get-single-course-details/" +
           id
       );
       console.log(res);

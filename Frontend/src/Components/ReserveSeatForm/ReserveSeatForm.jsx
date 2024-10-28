@@ -19,7 +19,7 @@ const ReserveSeatForm = () => {
 
   const getApiData = async () => {
     try {
-      const res = await axios.get("https://api.nimteducation.com/api/get-all-course");
+      const res = await axios.get("https://ins.api.digiindiasolutions.com/api/get-all-course");
       if (res.status === 200) {
         setCourseData(res.data.data);
       }
@@ -30,7 +30,7 @@ const ReserveSeatForm = () => {
 
   const getApiCategory = async () => {
     try {
-      const res = await axios.get("https://api.nimteducation.com/api/get-course-category");
+      const res = await axios.get("https://ins.api.digiindiasolutions.com/api/get-course-category");
       if (res.status === 200) {
         setCourseCategory(res.data.data);
       }
@@ -73,7 +73,7 @@ const ReserveSeatForm = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("https://api.nimteducation.com/api/send-query", formData);
+      const res = await axios.post("https://ins.api.digiindiasolutions.com/api/send-query", formData);
       setLoading(false);
       if (res.status === 200) {
         setSuccess(true);

@@ -18,7 +18,7 @@ const UnivercityCourse = () => {
   // Fetch course data from the API
   const getApiData = async () => {
     try {
-      const res = await axios.get("https://api.nimteducation.com/api/get-all-course");
+      const res = await axios.get("https://ins.api.digiindiasolutions.com/api/get-all-course");
       console.log(res); // Log response for debugging
       if (res.status === 200) {
         // Set the courses state with the data received

@@ -1,11 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import newsmain1 from "../../Images/newsMain1.png";
-import newsmain2 from "../../Images/news1.png";
-import newsmain3 from "../../Images/news2.png";
-import newsmain4 from "../../Images/news3.png";
-
 import "./news.css";
+import axios from "axios";
+
 const LatestNews = () => {
+  const [data, setData] = useState([]);
+  const [selectedNews, setSelectedNews] = useState(null); // State for selected news
+
+  const getApiData = async () => {
+    try {
+      const res = await axios.get("https://api.nimteducation.com/api/get-news");
+      const DataReverse = res.data;
+      setData(DataReverse.reverse());
+      // Set the default selected news to the first item
+      if (DataReverse.length > 0) {
+        setSelectedNews(DataReverse[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getApiData();
+  }, []);
+
+  // Function to format date in dd/mm/yyyy format
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with zero if needed
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get month (0-indexed) and pad with zero
+    const year = date.getFullYear(); // Get full year
+    return `${day}/${month}/${year}`; // Return formatted date
+  };
+
+  // Handler to update selected news on click
+  const handleNewsClick = (item) => {
+    setSelectedNews(item);
+  };
+
   return (
     <>
       <div className="latestNews">
@@ -23,82 +56,43 @@ const LatestNews = () => {
             <div className="col-lg-6 col-md-12 mb-4">
               <div className="newsBigImage">
                 <div>
-                  <img src={newsmain1} className="w-100" alt="" />
+                  <img src={selectedNews ? selectedNews.newsImage : newsmain1} className="w-100" alt="" />
                 </div>
                 <div className="p-2 mt-3">
                   <p>
                     <span>
-                      <i class="bi bi-calendar-check"></i> &nbsp;
+                      <i className="bi bi-calendar-check"></i> &nbsp;
                     </span>
-                    September 15, 2024
+                    {selectedNews ? formatDate(selectedNews.newsDate) : '15/09/2024'}
                   </p>
-                  <h3>New Course Launch</h3>
+                  <h3>{selectedNews ? selectedNews.newsHeading : 'New Course Launch'}</h3>
                   <p>
-                    Exciting new courses in AI and Digital Marketing are
-                    available.
+                    {selectedNews ? selectedNews.newsDetails : 'Exciting new courses in AI and Digital Marketing are available.'}
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="col-lg-6 col-md-12">
-              <div className="row newsSection">
-                <div className="col-md-4">
-                  <img src={newsmain2} className="w-100" />
-                </div>
-                <div className="col-md-8">
-                  <div>
-                    <h5>Upcoming Career Fair</h5>
-                    <p>
-                      <span>
-                        <i class="bi bi-calendar-check"></i> &nbsp;
-                      </span>
-                      October 1, 2024
-                    </p>
-                    <p>Join us on October 15 for our Annual Career Fair.</p>
+              {data.map((item, index) => (
+                <div className="row newsSection" key={index} onClick={() => handleNewsClick(item)} style={{cursor:"pointer"}}>
+                  <div className="col-md-4">
+                    <img src={item.newsImage} className="w-100" alt={item.newsHeading} />
+                  </div>
+                  <div className="col-md-8">
+                    <div>
+                      <h5>{item.newsHeading}</h5>
+                      <p>
+                        <span>
+                          <i className="bi bi-calendar-check"></i> &nbsp;
+                        </span>
+                        {formatDate(item.newsDate)}
+                      </p>
+                      <p>{item.newsDetails}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="row newsSection">
-                <div className="col-md-4">
-                  <img src={newsmain3} className="w-100" />
-                </div>
-                <div className="col-md-8">
-                  <div>
-                    <h5>Student Competition Success</h5>
-                    <p>
-                      <span>
-                        <i class="bi bi-calendar-check"></i> &nbsp;
-                      </span>
-                      October 10, 2024
-                    </p>
-                    <p>
-                      Congratulations to our team for winning the Business Case
-                      Competition!
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="row newsSection">
-                <div className="col-md-4">
-                  <img src={newsmain4} className="w-100" />
-                </div>
-                <div className="col-md-8">
-                  <div>
-                    <h5>Skill Enhancement Workshop</h5>
-                    <p>
-                      <span>
-                        <i class="bi bi-calendar-check"></i> &nbsp;
-                      </span>
-                      October 12, 2024
-                    </p>
-                    <p>
-                      Join our Effective Communication Skills workshop on
-                      October 20.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

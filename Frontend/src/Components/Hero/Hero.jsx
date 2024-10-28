@@ -32,7 +32,7 @@ const Hero = () => {
   const getApiData = async () => {
     try {
       const res = await axios.get(
-        "https://api.nimteducation.com/api/get-all-course"
+        "https://ins.api.digiindiasolutions.com/api/get-all-course"
       );
       if (res.status === 200) {
         setCourseData(res.data.data);
@@ -45,7 +45,7 @@ const Hero = () => {
   const getApiCategory = async () => {
     try {
       const res = await axios.get(
-        "https://api.nimteducation.com/api/get-course-category"
+        "https://ins.api.digiindiasolutions.com/api/get-course-category"
       );
       if (res.status === 200) {
         setCourseCategory(res.data.data);
@@ -96,7 +96,7 @@ const Hero = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://api.nimteducation.com/api/send-query",
+        "https://ins.api.digiindiasolutions.com/api/send-query",
         formData
       );
       setLoading(false);
