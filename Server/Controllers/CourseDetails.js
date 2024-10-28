@@ -114,22 +114,24 @@ exports.getAllCourseDetails = async (req, res) => {
 // Get a single Course Details by ID
 exports.getCourseDetailsById = async (req, res) => {
     try {
-        const id = req.params.id;
-        console.log("My Id", id);
+        const courseId = req.params.id; // Extract the ID from the request parameters
+        console.log("Course ID:", courseId);
 
-        // Find the courseDetails by courseName reference and populate the related course data
-        const data = await courseDetails.findById(id).populate('courseName');
+        // Find the course details by course ID and populate the related course data
+        const courseData = await courseDetails.findOne({ courseName: courseId }).populate('courseName');
+        console.log(courseData, "Fetched Course Data");
 
         // Handle case if no data is found
-        if (!data) {
+        if (!courseData) {
             return res.status(404).json({ success: false, message: 'Course details not found' });
         }
 
         // Success response
-        res.status(200).json({ success: true, data });
+        res.status(200).json({ success: true, data: courseData }); // Return courseData directly instead of wrapping it in an array
     } catch (error) {
         // Error handling
-        res.status(400).json({ success: false, error: error.message });
+        console.error("Error fetching course details:", error); // Log the error for debugging
+        res.status(500).json({ success: false, message: 'Error fetching course details', error: error.message });
     }
 };
 
